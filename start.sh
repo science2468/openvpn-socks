@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # 启动 OpenVPN
-openvpn --config "$OVPN" --up /etc/openvpn/up.sh --down /etc/openvpn/down.sh --daemon
+openvpn --config "$OVPN" --up /etc/openvpn/up.sh --down /etc/openvpn/down.sh
 
 # 静默检测 tun0 接口
 while true; do
