@@ -16,4 +16,4 @@ COPY sockd.conf /etc/sockd/sockd.conf
 # 启动脚本，启动OpenVPN和Dante SOCKS服务器
 CMD openvpn --config "$OVPN" --up /etc/openvpn/up.sh --down /etc/openvpn/down.sh & \
     while ! ip a show tun0; do sleep 1; done; \
-    sockd -f /etc/sockd/sockd.conf -N 1
+    sockd -f /etc/sockd/sockd.conf -D
