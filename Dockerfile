@@ -14,6 +14,6 @@ RUN chmod +x /etc/openvpn/update-resolv-conf
 COPY sockd.conf /etc/sockd/sockd.conf
 
 # 启动脚本，启动OpenVPN和Dante SOCKS服务器
-CMD openvpn --config "$OVPN" --up /etc/openvpn/up.sh --down /etc/openvpn/down.sh --daemon & \
-    while ! ip a show tun0; do sleep 1; done; \
+CMD openvpn --config "$OVPN" --up /etc/openvpn/up.sh --down /etc/openvpn/down.sh --daemon && \
+    while ! ip a show tun0; do sleep 1; done && \
     sockd -f /etc/sockd/sockd.conf -D
