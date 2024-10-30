@@ -16,4 +16,4 @@ RUN chmod +x /etc/openvpn/update-resolv-conf
 RUN chmod +x /start.sh
 
 # 启动脚本，启动OpenVPN和Dante SOCKS服务器
-CMD ["/start.sh"]
+ENTRYPOINT ["/start.sh"]
