@@ -9,7 +9,7 @@ RUN apk update && \
 COPY update-resolv-conf /etc/openvpn/update-resolv-conf
 
 # 配置Dante SOCKS服务器
-RUN echo "
+RUN cat <<EOF > /etc/sockd.conf
 logoutput: stderr
 internal: 0.0.0.0 port = 1080  # 在所有接口上监听代理请求
 external: tun0                # 使用VPN接口
@@ -19,7 +19,8 @@ client pass {
     log: error
 }
 socksmethod: none
-" > /etc/sockd.conf
+EOF
 
 # 启动脚本，启动OpenVPN和Dante SOCKS服务器
 CMD openvpn --config /etc/openvpn/client.ovpn & sockd -f /etc/sockd.conf -N
+
