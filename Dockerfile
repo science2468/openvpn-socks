@@ -5,17 +5,8 @@ FROM alpine:latest
 RUN apk update && \
     apk add --no-cache openvpn dante-server
 
-# 创建OpenVPN配置目录
-RUN mkdir -p /etc/openvpn
-
-# 复制OpenVPN配置文件到容器中
-COPY client.ovpn /etc/openvpn/client.ovpn
-
 # 复制update-resolv-conf脚本到容器中
 COPY update-resolv-conf /etc/openvpn/update-resolv-conf
-
-# 为update-resolv-conf脚本添加执行权限
-RUN chmod +x /etc/openvpn/update-resolv-conf
 
 # 配置Dante SOCKS服务器
 RUN echo "
