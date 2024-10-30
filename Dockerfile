@@ -7,7 +7,6 @@ RUN apk update && \
 
 # 复制OpenVPN配置文件和脚本到容器中
 COPY update-resolv-conf /etc/openvpn/update-resolv-conf
-COPY client.ovpn /etc/openvpn/client.ovpn
 
 # 复制Dante SOCKS服务器配置文件
 COPY sockd.conf /etc/sockd/sockd.conf
