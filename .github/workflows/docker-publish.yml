@@ -2,11 +2,6 @@ name: Build and Push Podman Image to GitHub Packages
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
