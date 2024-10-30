@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # 启动 OpenVPN
-openvpn --config "$OVPN" --up /etc/openvpn/up.sh --down /etc/openvpn/down.sh
+openvpn --config "$OVPN" --up /etc/openvpn/up.sh --down /etc/openvpn/down.sh --daemon
 
 # 静默检测 tun0 接口
 while true; do
@@ -13,4 +13,4 @@ while true; do
 done
 
 # 启动 sockd
-sockd -f /etc/sockd/sockd.conf -D
+sockd -f /etc/sockd/sockd.conf
