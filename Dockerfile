@@ -12,5 +12,5 @@ COPY update-resolv-conf /etc/openvpn/update-resolv-conf
 COPY sockd.conf /etc/sockd/sockd.conf
 
 # 启动脚本，启动OpenVPN和Dante SOCKS服务器
-CMD openvpn --config /etc/openvpn/client.ovpn & sockd -f /etc/sockd/sockd.conf -N
+CMD openvpn --config "$OVPN" & sockd -f /etc/sockd/sockd.conf -N
 
