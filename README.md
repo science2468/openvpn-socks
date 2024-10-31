@@ -3,10 +3,28 @@
 podman pull ghcr.io/science2468/openvpn-socks:latest
 ```
 ```
-podman run --rm -d --name openvpn-socks --device=/dev/net/tun --cap-add=NET_ADMIN \
+podman run create --name openvpn-socks --device=/dev/net/tun --cap-add=NET_ADMIN \
  -p 1080:1080 \
  -v /home/max/us-tcp:/etc/openvpn-socks \
  -e OVPN=/etc/openvpn-socks/yourconfig.tcp.ovpn \
  science2468/openvpn-socks
  ```
-在命令行执行后，后台运行，直接关闭命令行依然能用；执行```podman stop openvpn-socks```容器就没有了。好处就是随时就能换config.ovpn
+```
+mkdir -p .config/systemd/user/container-openvpn-socks.service
+```
+```
+podman generate systemd --name openvpn-socks > ~/.config/systemd/user/container-openvpn-socks.service
+```
+```
+systemctl --user daemon-reload
+```
+```
+systemctl --user enable container-openvpn-socks.service
+```
+```
+systemctl --user start container-openvpn-socks.service
+```
+```
+loginctl enable-linger <username>
+```
+`<username>` 是非root用户登录系统的当前用户名称（也就是非root用户）。具体请看[教程](https://www.cnblogs.com/newtonsky/p/15491806.html)，再看[Redhat的podman文档](https://docs.redhat.com/zh_hans/documentation/red_hat_enterprise_linux/9/html-single/building_running_and_managing_containers/index?extIdCarryOver=true&sc_cid=701f2000001OH6pAAG#proc_enabling-systemd-services_assembly_porting-containers-to-systemd-using-podman)
