@@ -2,7 +2,7 @@
 ```
 podman create --name openvpn-socks --device=/dev/net/tun --cap-add=NET_ADMIN \
  -p 1080:1080 \
- -v /home/max/us-tcp:/etc/openvpn-socks \
+ -v /home/max/ustcp:/etc/openvpn-socks \
  -e OVPN=/etc/openvpn-socks/yourconfig.tcp.ovpn \
  ghcr.io/science2468/openvpn-socks
  ```
