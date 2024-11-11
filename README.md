@@ -1,13 +1,10 @@
 # 推荐
 ```
-podman pull ghcr.io/science2468/openvpn-socks:latest
-```
-```
-podman run create --name openvpn-socks --device=/dev/net/tun --cap-add=NET_ADMIN \
+podman create --name openvpn-socks --device=/dev/net/tun --cap-add=NET_ADMIN \
  -p 1080:1080 \
  -v /home/max/us-tcp:/etc/openvpn-socks \
  -e OVPN=/etc/openvpn-socks/yourconfig.tcp.ovpn \
- science2468/openvpn-socks
+ ghcr.io/science2468/openvpn-socks
  ```
 ```
 mkdir -p .config/systemd/user/container-openvpn-socks.service
