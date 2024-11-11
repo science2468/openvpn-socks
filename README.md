@@ -7,7 +7,7 @@ podman create --name openvpn-socks --device=/dev/net/tun --cap-add=NET_ADMIN \
  ghcr.io/science2468/openvpn-socks
  ```
 ```
-mkdir -p .config/systemd/user/container-openvpn-socks.service
+mkdir -p .config/systemd/user/
 ```
 ```
 podman generate systemd --name openvpn-socks > ~/.config/systemd/user/container-openvpn-socks.service
